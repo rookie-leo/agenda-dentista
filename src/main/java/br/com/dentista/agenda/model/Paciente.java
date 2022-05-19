@@ -25,9 +25,7 @@ public class Paciente {
 	@Deprecated
 	public Paciente() {}
 	
-	public Paciente(Long id, Pessoa pessoa) {
-		super();
-		this.id = id;
+	public Paciente(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
 

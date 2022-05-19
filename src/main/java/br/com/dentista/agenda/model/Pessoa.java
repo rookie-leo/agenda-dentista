@@ -1,6 +1,5 @@
 package br.com.dentista.agenda.model;
 
-import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -8,7 +7,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 public class Pessoa {
 
-	@Id
+	@NotBlank
 	private String nome;
 	@NotBlank
 	private String sobrenome;
