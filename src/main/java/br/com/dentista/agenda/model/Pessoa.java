@@ -1,12 +1,25 @@
 package br.com.dentista.agenda.model;
 
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.br.CPF;
+
 public class Pessoa {
 
+	@Id
 	private String nome;
+	@NotBlank
 	private String sobrenome;
+	@NotBlank
+	@CPF
 	private String documento;
+	@NotNull
 	private Endereco endereco;
+	@NotBlank
 	private String telefone;
+	@NotBlank
 	private String email;
 	
 	public Pessoa() {}

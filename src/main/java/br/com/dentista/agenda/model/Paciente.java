@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -14,8 +15,10 @@ public class Paciente {
 	private Long id;
 	@NotNull
 	private Pessoa pessoa;
+	@OneToOne
 	private Prontuario prontuario;
 	
+
 	/**
 	 * @method metodo exclusivo para uso do Hibernate
 	 * */
@@ -43,6 +46,16 @@ public class Paciente {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
+	
+	public Prontuario getProntuario() {
+		return prontuario;
+	}
+
+	public void setProntuario(Prontuario prontuario) {
+		this.prontuario = prontuario;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -50,6 +63,7 @@ public class Paciente {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((pessoa == null) ? 0 : pessoa.hashCode());
+		result = prime * result + ((prontuario == null) ? 0 : prontuario.hashCode());
 		return result;
 	}
 
@@ -72,6 +86,11 @@ public class Paciente {
 				return false;
 		} else if (!pessoa.equals(other.pessoa))
 			return false;
+		if (prontuario == null) {
+			if (other.prontuario != null)
+				return false;
+		} else if (!prontuario.equals(other.prontuario))
+			return false;
 		return true;
 	}
 
@@ -82,6 +101,8 @@ public class Paciente {
 		builder.append(id);
 		builder.append(", pessoa=");
 		builder.append(pessoa);
+		builder.append(", prontuario=");
+		builder.append(prontuario);
 		builder.append("]");
 		return builder.toString();
 	}
